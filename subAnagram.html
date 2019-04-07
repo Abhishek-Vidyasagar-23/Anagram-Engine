@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+
+<title></title>
+    <style>
+        ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+h3{
+    color: #2B2980;
+}
+
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #2B2980;
+}
+input[type=text] {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #2B2980;
+  color: white;
+}
+
+    </style>
+
+</head>
+<body>
+
+<p >Welcome <span class="email nav">{{user}}</span> you can logout <a href="{{ logout_url }}">here</a></p>
+    <p  class="nav"><a href="/add_anagram">Add Anagram</a></p>
+
+<form action="/subAnagram" method="post">
+
+        <p>Search Anagram</p>
+        <td> Word</td>
+         <td> <input type="text" name="wordList" size="25" pattern="([a-zA-Z]).{2,}"/></td>
+        <td><input type="submit" name="button" value="Check"/></td>
+    </tr>
+
+    <p>{{error}}</p>
+
+</form>
+<table id="customers">
+
+
+    <th> Anagram Count</th>
+    <th> Word Count</th>
+    <th> Sub Anagrams</th>
+    <tr>
+
+
+        <td>{{ anagram_count }}</td>
+        <td> {{ word_count }}</td>
+        <td>{% for i in resultList%}
+            {{ i }}<br>
+{% endfor %}
+</td>
+    </tr>
+</table>
+Go back to home page by clicking<a href="/"> Here</a>
+
+</body>
+</html>

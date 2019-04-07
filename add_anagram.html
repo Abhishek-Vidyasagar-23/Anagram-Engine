@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+        table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+       .message{
+       color: green;
+       }
+
+
+
+    </style>
+</head>
+
+<body>
+<div class="content">
+<p style="text-align: center;">Welcome <span class="email nav">{{user}}</span> you can logout <a href="{{ logout_url }}">here</a></p>
+<form action=" /add_anagram " method="post">
+    <table>
+        <tr>
+            <td>
+       <h1>Add to Anagram Dictionary </h1>
+    </td>
+
+        </tr>
+        <tr>
+            <td> Word</td>
+
+        </tr>
+        <tr>
+            <td> <input type="text" name="wordList" size="25" pattern="[a-zA-Z]+.{2,}"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="button" value="ADD WORD"/></td>
+        </tr>
+    </table>
+    <P class="message">{{message}}</P>
+
+
+</form>
+</div>
+<h4><a href="/" >Go back</a></h4>
+</body>
+</html>

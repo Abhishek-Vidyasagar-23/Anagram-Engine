@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+
+<title></title>
+
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+h3{
+    color: #2B2980;
+}
+
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #2B2980;
+}
+input[type=text] {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #2B2980;
+  color: white;
+}
+
+</style>
+
+
+</head>
+<body>
+<ul>
+
+    <li><a href="/add_anagram">Add Anagrams</a> </li>
+    <li><a href="/readFile">Upload Anagram File</a> </li>
+    <li><a href="/subAnagram">Sub Anagrams</a> </li>
+    <li><a href="{{ logout_url }}">Logout</a></li>
+</ul>
+
+<h1>Welcome to Anagram Engine by Abhishek Vidyasagar</h1>
+<form action="/" method="post">
+
+    <br>
+    <br>
+
+
+        <h2>Search Anagram</h2>
+
+
+         Word
+          <input type="text" name="wordList" size="25" pattern="([a-zA-Z]).{2,}"/>
+        <input type="submit" name="button" value="Search"/>
+
+        <p>{{error}}</p>
+
+
+</form>
+<table id="customers">
+    <th> Lexicographical order of the word</th>
+    <th> Sorted Combinations of the word</th>
+    <th> Anagram Count</th>
+    <th> Word Count</th>
+    <tr>
+        <td>{{ query.wordSorted }}</td>
+        <td>{% for i in query.wordList %}
+    {{ i }}
+        {% endfor %}</td>
+        <td>{{ anagram_count }}</td>
+        <td> {{ word_count }}</td>
+    </tr>
+</table>
+</body>
+</html>
